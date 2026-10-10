@@ -1,0 +1,51 @@
+<odoo>
+
+    <menuitem id="menu_school_management"
+              name="School MS"
+              sequence="10"
+              web_icon="school_management_system,static/description/icon.png"
+    />
+
+    <menuitem id="menu_student_registration"
+              name="Student Registration"
+              sequence="10"
+              parent="menu_school_management"
+              action="action_student_registration"
+    />
+
+    <menuitem id="menu_school_teacher"
+              name="Teachers"
+              sequence="11"
+              parent="menu_school_management"
+              action="action_school_teacher"
+    />
+
+    <menuitem id="menu_school_configuration"
+              name="Configuration"
+              sequence="70"
+              parent="menu_school_management"
+    />
+
+    <menuitem id="menu_school_class"
+              name="Class"
+              sequence="10"
+              parent="menu_school_configuration"
+              action="action_school_class"
+    />
+
+    <menuitem id="menu_school_subject"
+              name="Subject"
+              sequence="11"
+              parent="menu_school_configuration"
+              action="action_school_subject"
+    />
+
+    <menuitem id="menu_school_academic_year"
+              name="Academic Year"
+              sequence="12"
+              parent="menu_school_configuration"
+              action="action_school_academic_year"
+    />
+
+
+</odoo>

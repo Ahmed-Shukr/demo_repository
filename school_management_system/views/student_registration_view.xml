@@ -1,0 +1,106 @@
+<odoo>
+
+    <record id="view_student_registration_tree" model="ir.ui.view">
+        <field name="name">student.student.tree</field>
+        <field name="model">student.student</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence"/>
+                <field name="name"/>
+                <field name="registration_no"/>
+                <field name="academic_year_id"/>
+                <field name="class_id"/>
+                <field name="age"/>
+                <field name="gender"/>
+                <field name="status" widget="badge"
+                       decoration-info="status == 'new'"
+                       decoration-success="status == 'enrolled'"
+                       decoration-danger="status == 'drop_out'"
+                       decoration-warning="status == 'graduated'"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_student_registration_form">
+        <field name="name">student.student.form</field>
+        <field name="model">student.student</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <widget name="web_ribbon" title="Drop Out" bg_color="text-bg-warning" invisible="active"/>
+                    <field name="image" widget="image" class="oe_avatar" options="{'size': [90, 90]}"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Student Name"/>
+                        </h1>
+                        <h3 class="text-muted">Student</h3>
+                    </div>
+                    <group>
+                        <group>
+                            <separator string = "Student Info"/>
+                            <field name="sequence"/>
+                            <field name="registration_no"/>
+                            <field name="academic_year_id"/>
+                            <field name="class_id" domain="[('academic_year_id', '=', academic_year_id)] if academic_year_id else []"/>
+                            <field name="tuition_fee"/>
+                            <field name="supervisor"/>
+                            <field name="number_of_seats"/>
+                            <field name="school_subject_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                            <field name="teacher_subject_id"/>
+                            <field name="average_marks" />
+                            <field name="active"/>
+                            <field name="status" widget="badge"
+                                   decoration-info="status == 'new'"
+                                   decoration-success="status == 'enrolled'"
+                                   decoration-danger="status == 'drop_out'"
+                                   decoration-warning="status == 'graduated'"/>
+                        </group>
+                        <group>
+                            <separator string=""/>
+                            <field name="birth_date"/>
+                            <field name="age"/>
+                            <field name="gender"/>
+                            <field name="address"/>
+                            <field name="is_graduated"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_student_registration_search">
+        <field name="name">student.student.search</field>
+        <field name="model">student.student</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="sequence"/>
+                <field name="name"/>
+                <field name="registration_no"/>
+                <field name="age"/>
+                <field name="gender"/>
+                <field name="address"/>
+                <field name="class_id"/>
+                <field name="academic_year_id"/>
+                <filter name="male_filter" string="Male (Age > 18)" domain="[('gender','=','male'),('age','>',18)]"/>
+                <filter name="female_filter" string="Female" domain="[('gender','=','female')]"/>
+                <filter name="age_filter" string="Age > 18" domain="[('age','>',18)]"/>
+                <filter name="gender_group_by" string="Gender" context="{'group_by': 'gender'}"/>
+                <filter name="class_group_by" string="Class" context="{'group_by': 'class_id'}"/>
+                <filter name="academic_year_group_by" string="Academic Year" context="{'group_by': 'academic_year_id'}"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_student_registration" model="ir.actions.act_window">
+        <field name="name">Students Registration</field>
+        <field name="res_model">student.student</field>
+        <field name="view_mode">list,form</field>
+<!--        <field name="context">{'group_by': 'class_id'}</field>-->
+                <field name="context">{'search_default_female_filter': 1}</field>
+
+    </record>
+
+
+</odoo>

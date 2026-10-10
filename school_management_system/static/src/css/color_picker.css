@@ -1,0 +1,21 @@
+.o_color_box {
+    width: 22px;
+    height: 22px;
+    margin: 3px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+}
+
+.o_color_0 { background: #f44336; }
+.o_color_1 { background: #e91e63; }
+.o_color_2 { background: #9c27b0; }
+.o_color_3 { background: #673ab7; }
+.o_color_4 { background: #3f51b5; }
+.o_color_5 { background: #2196f3; }
+.o_color_6 { background: #009688; }
+.o_color_7 { background: #4caf50; }
+.o_color_8 { background: #cddc39; }
+.o_color_9 { background: #ff9800; }
+.o_color_10 { background: #795548; }
+.o_color_11 { background: #607d8b; }

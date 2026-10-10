@@ -1,0 +1,8 @@
+<t t-name="school.ColorPicker">
+    <div class="o_color_picker d-flex flex-wrap">
+        <t t-foreach="state.colors" t-as="c" t-key="c">
+            <div t-attf-class="o_color_box o_color_#{c}"
+                 t-on-click="() => selectColor(c)"/>
+        </t>
+    </div>
+</t>
